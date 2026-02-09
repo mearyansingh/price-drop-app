@@ -5,9 +5,9 @@ import { Loader2 } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { getPriceHistory } from "@/app/actions";
 
-export default function PriceChart({ productId }) {
+export default function PriceChart({ productId }: { productId: string }) {
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<{ date: string; price: number }[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
