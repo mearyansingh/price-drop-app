@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+npm install @supabase/supabase-js
+npm install @supabase/ssr
+https://supabase.com/docs/guides/getting-started/tutorials/with-nextjs
+https://docs.firecrawl.dev/features/scrape#%2Fscrape-with-json-endpoint
+https://resend.com/docs/dashboard/emails/introduction
+https://github.com/resend/resend-nextjs-app-router-example
+
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
