@@ -8,6 +8,13 @@ import { sendPriceDropAlert } from "@/lib/email";
 // -H "Authorization: Bearer your_cron_seret" 
 
 export async function POST(request: NextRequest) {
+  // 1. Move your env checks to the top
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !supabaseServiceKey) {
+    return NextResponse.json({ error: "Missing Supabase configuration" }, { status: 500 });
+  }
   try {
     const authHeader = request.headers.get("authorization");
     const cronSecret = process.env.CRON_SECRET;
@@ -17,10 +24,11 @@ export async function POST(request: NextRequest) {
     }
 
     // Use service role to bypass RLS
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL,
-      process.env.SUPABASE_SERVICE_ROLE_KEY
-    );
+    // const supabase = createClient(
+    //   process.env.NEXT_PUBLIC_SUPABASE_URL,
+    //   process.env.SUPABASE_SERVICE_ROLE_KEY
+    // );
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     const { data: products, error: productsError } = await supabase
       .from("products")
