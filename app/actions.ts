@@ -89,7 +89,7 @@ export async function addProduct(formData: FormData) {
   }
 }
 
-export async function deleteProduct(productId) {
+export async function deleteProduct(productId: string) {
   try {
     const supabase = await createClient();
     const { error } = await supabase
@@ -122,7 +122,7 @@ export async function getProducts() {
   }
 }
 
-export async function getPriceHistory(productId) {
+export async function getPriceHistory(productId: string) {
   try {
     const supabase = await createClient();
     const { data, error } = await supabase
